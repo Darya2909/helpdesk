@@ -1,0 +1,102 @@
+<style>
+.menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li {
+  display: inline-block;
+  position: relative;
+}
+
+.menu a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: #333;
+}
+
+.menu ul ul {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+}
+
+.menu ul ul li {
+  display: block;
+}
+
+.menu ul ul a {
+  padding: 5px 10px;
+}
+
+.menu li:hover > ul {
+  display: block;
+}
+</style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.9.2/dist/full.css" rel="stylesheet" type="text/css"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/alpinejs" defer></script>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <title>Title</title>
+</head>
+<body>
+<div class="menu">
+  <ul>
+    <li>
+      <a href="#">Главная</a>
+    </li>
+    <li>
+      <a href="#">О нас</a>
+      <ul>
+        <li><a href="#">Наша команда</a></li>
+        <li><a href="#">История</a></li>
+        <li><a href="#">Миссия</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#">Услуги</a>
+      <ul>
+        <li><a href="#">Веб-дизайн</a></li>
+        <li><a href="#">Веб-разработка</a></li>
+        <li><a href="#">SEO</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#">Контакты</a>
+    </li>
+  </ul>
+</div>
+</body>
+</html>
+
+<script>
+    // Получаем все элементы списка
+var menuItems = document.querySelectorAll('.menu li');
+
+// Проходимся по каждому элементу списка
+menuItems.forEach(function(item) {
+  // Получаем выпадающее меню для текущего элемента списка
+  var subMenu = item.querySelector('ul');
+
+  // Если выпадающее меню существует
+  if (subMenu) {
+    // Добавляем обработчик события на клик по элементу списка
+    item.addEventListener('click', function(e) {
+      // Отменяем стандартное действие браузера
+      e.preventDefault();
+      // Переключаем класс, который отображает или скрывает выпадающее меню
+      subMenu.classList.toggle('show');
+    });
+  }
+});
+</script>
